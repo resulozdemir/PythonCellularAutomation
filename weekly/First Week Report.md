@@ -25,6 +25,9 @@
 - Prepared the Gantt chart for the project.
 - Uploaded the chart in a visual and understandable format to the GitHub repository.
 
-### 7. Reporting
+### 7. Modem Installation
+- Successfully installed and configured the modem for internet connectivity.
+
+### 8. Reporting
 - Detailed reporting of weekly progress.
 - Prepared and uploaded the report in Markdown format to GitHub.
