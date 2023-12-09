@@ -1,0 +1,31 @@
+
+# Hafta 1 Raporu
+
+## Görevler ve İlerleme Durumu
+
+### 1. Temel Git Komutlarının Öğrenilmesi
+- [x] Git'in temel prensipleri hakkında bilgi edindim.
+- [x] Temel git komutlarını (git clone, git add, git commit, git push, git pull) tekrar ettim.
+
+### 2. GitHub Reposunun Oluşturulması
+- [x] GitHub'da proje için yeni bir repo oluşturdum.
+- [x] İlk commit ve push işlemlerini gerçekleştirdim.
+
+### 3. Markdown Doküman Oluşturma
+- [x] Markdown yazım kuralları ve formatları hakkında bilgi edindim.
+
+### 4. Raspberry Pi 3B+ İlk Kurulum ve Temel Bash Komutları
+- [x] Raspberry Pi 3B+ için gerekli işletim sistemi kurulumunu tamamladım.
+- [x] Temel bash komutlarını öğrendim ve uygulamalı olarak denedim.
+
+### 5. Proje Planının Hazırlanması
+- [x] Projeyi 6 haftalık süre içinde tamamlamak için detaylı bir plan oluşturdum.
+- [x] Planı, haftalık görevler ve hedefler şeklinde düzenledim.
+
+### 6. Gantt Şemasının Hazırlanması
+- [x] Proje için Gantt şemasını hazırladım.
+- [x] Şemayı görsel ve anlaşılır bir formatta GitHub reposuna ekledim.
+
+### 7. Raporlama
+- [x] Haftalık ilerlemeleri detaylı bir şekilde raporladım.
+- [x] Raporu Markdown formatında hazırlayıp GitHub'a yükledim.
