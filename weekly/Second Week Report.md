@@ -21,3 +21,12 @@
 ### 5. Weekly Reporting and Documentation
 - Documented the progress and findings of the week.
 - Prepared the weekly report in a clear and concise format.
+
+## References
+- [Python Programming Tutorials](https://www.youtube.com/playlist?list=PLWctyKyPphPiul3WbHkniANLqSheBVP3O)
+- [An Introduction to Cellular AT Commands - Cavli Wireless](https://www.cavliwireless.com/blog/nerdiest-of-things/an-introduction-to-cellular-at-commands.html)
+- [Sending AT Commands - Sixfab Docs](https://docs.sixfab.com/page/sending-at-commands)
+- [Modem AT Command - The Geek Stuff](https://www.thegeekstuff.com/2013/05/modem-at-command/)
+- [Read Response AT Command with PySerial - Stack Overflow](https://stackoverflow.com/questions/23532038/read-response-at-command-with-pyserial)
+- [Raspberry Pi Forum Discussion on PySerial](https://forums.raspberrypi.com/viewtopic.php?t=113664)
+- [Python Forum Discussion on PySerial](https://python-forum.io/thread-35651.html)
