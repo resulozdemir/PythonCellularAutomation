@@ -31,3 +31,8 @@
 ### 8. Reporting
 - Detailed reporting of weekly progress.
 - Prepared and uploaded the report in Markdown format to GitHub.
+
+## References
+- [Top 12 Most Used Git Commands for Developers - GeeksforGeeks](https://www.geeksforgeeks.org/top-12-most-used-git-commands-for-developers/?ref=lbp)
+- [Raspberry Pi Software - Raspberry Pi](https://www.raspberrypi.com/software/)
+- [Markdown Crash Course - YouTube](https://www.youtube.com/watch?v=zC22yPmc6Kw)
