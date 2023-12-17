@@ -12,7 +12,7 @@
 
 # Project Plan
 
-## Week 1: Git and Markdown Training, Raspberry Pi Setup, and Project Planning
+## Week 1: Markdown Training, Raspberry Pi Setup, and Project Planning
 - Creation of the GitHub repository for the project.
 - Learning how to create documents with Markdown.
 - Initial setup of Raspberry Pi 3B+, preparing the operating system, learning basic bash commands.
