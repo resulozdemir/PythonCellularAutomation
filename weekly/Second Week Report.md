@@ -14,7 +14,7 @@
 - Conducted trials for sending and receiving basic AT commands to the modem.
 - Successfully sent simple commands and received responses from the modem.
 
-  '''python
+  ```python
   import serial
   import time
 
@@ -34,7 +34,7 @@
   response = signal.read(signal.in_waiting).decode()
   print("Response: ", response)
 
-  signal.close()'''
+  signal.close()```
 
 ### 4. Researching Python Libraries for Serial Port Communication
 - Investigated Python libraries suitable for serial port communication.
