@@ -14,6 +14,8 @@
 - Conducted trials for sending and receiving basic AT commands to the modem.
 - Successfully sent simple commands and received responses from the modem.
 
+
+
 ### 4. Researching Python Libraries for Serial Port Communication
 - Investigated Python libraries suitable for serial port communication.
 - Focused on understanding the usage of `pySerial` library.
@@ -30,3 +32,5 @@
 - [Read Response AT Command with PySerial - Stack Overflow](https://stackoverflow.com/questions/23532038/read-response-at-command-with-pyserial)
 - [Raspberry Pi Forum Discussion on PySerial](https://forums.raspberrypi.com/viewtopic.php?t=113664)
 - [Python Forum Discussion on PySerial](https://python-forum.io/thread-35651.html)
+- [PySerial Short Introduction](https://pyserial.readthedocs.io/en/latest/shortintro.html)
+- [PySerial API Documentation](https://pyserial.readthedocs.io/en/latest/pyserial_api.html)
