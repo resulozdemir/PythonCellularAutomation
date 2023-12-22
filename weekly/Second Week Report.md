@@ -34,7 +34,7 @@
   response = signal.read(signal.in_waiting).decode()
   print("Response: ", response)
 
-  signal.close()```
+  signal.close()
 
 ### 4. Researching Python Libraries for Serial Port Communication
 - Investigated Python libraries suitable for serial port communication.
