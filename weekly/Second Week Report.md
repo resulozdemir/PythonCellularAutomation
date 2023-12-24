@@ -36,6 +36,9 @@
 
   signal.close()
 
+![screenshot](https://github.com/resulozdemir/PythonCellularAutomation/assets/102479969/e3899ceb-0504-42be-a94c-553ad5589dcc)
+
+
 ### 4. Researching Python Libraries for Serial Port Communication
 - Investigated Python libraries suitable for serial port communication.
 - Focused on understanding the usage of `pySerial` library.
