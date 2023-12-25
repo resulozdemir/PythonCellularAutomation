@@ -27,12 +27,12 @@
 
 ## Week 3: Developing Python Library - Basic Functions
 - Starting to write a library for serial port communication in Python.
-- Writing functions to send basic AT commands to the modem and receive responses.
+- Writing functions to process responses from AT commands received from the modem.
 - Testing and debugging the written code.
 
 ## Week 4: Developing Python Library - Advanced Features
-- Developing an automatic modem serial port recognition feature.
 - Writing functions to customize serial port settings (baud rate, parity, etc.).
+- Developing an automatic modem serial port recognition feature.
 - Testing and debugging the developed features.
 
 ## Week 5: HTTP and MQTT Communication
