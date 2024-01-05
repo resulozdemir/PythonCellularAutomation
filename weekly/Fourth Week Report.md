@@ -25,8 +25,7 @@
 - For POST requests, used AT+QHTTPPOST with AT+QHTTPREAD. AT+QHTTPPOST sends data to the server, and AT+QHTTPREAD helps us see the server's response.
 
     ```python
-    def http_request(self, url, method='GET', data=None):        
-        self.send_at_command('AT+QIACT?', 0)
+    def http_request(self, url, method='GET', data=None): 
         self.send_at_command('AT+QICSGP=1,1,"Turkcell Twilio","","",1', 0)
         self.send_at_command('AT+QIACT=1', 0)
         self.send_at_command('AT+QHTTPCFG="contextid",1', 0)
