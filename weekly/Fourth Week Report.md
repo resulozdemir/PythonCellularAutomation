@@ -15,12 +15,12 @@
 - For POST requests, used AT+QHTTPPOST with AT+QHTTPREAD. AT+QHTTPPOST sends data to the server, and AT+QHTTPREAD helps us see the server's response.
 - A class that uses the ModemCommunicator library and sends HTTP requests has been developed.
 - Added a `filter_response` function to process and clean up the responses received from the server.
-
+.
 ### Improvements in AT Command Communication
 - Improved the send_at_command method by adding a flag parameter. This helps to manage different kinds of responses and the time it takes to receive them.
 
 ### Challenges and Solutions
-- Faced '+CME ERROR' messages at first. Fixed this by waiting longer for responses in our code.
+- Faced '+CME ERROR 703' messages at HTTP GET. Fixed this by waiting longer for responses in our code.
 
 ## References
 - [Sixfab HTTP AT Commands Manual](https://sixfab.com/wp-content/uploads/2018/09/Quectel_EC2xEG9xEM05_HTTPS_AT_Commands_Manual_V1.0.pdf)
