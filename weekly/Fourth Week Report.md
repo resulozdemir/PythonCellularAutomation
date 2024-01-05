@@ -72,7 +72,7 @@
         print("GET İsteği Sonucu:", send_http_get(get_url))
         print("POST İsteği Sonucu:", send_http_post(post_url, post_data))
 
-![Alt text](httpOutput.png)
+![Http Output](httpOutput.png)
 
 - Added a `filter_response` function to process and clean up the responses received from the server.
 
