@@ -23,8 +23,6 @@
 - Used AT+QHTTPCFG and AT+QHTTPURL commands for setting up HTTP sessions. These work for both GET and POST requests. 
 - For GET requests, used AT+QHTTPGET and AT+QHTTPREAD commands. AT+QHTTPGET starts the GET request, and AT+QHTTPREAD lets us read what the server sends back.
 - For POST requests, used AT+QHTTPPOST with AT+QHTTPREAD. AT+QHTTPPOST sends data to the server, and AT+QHTTPREAD helps us see the server's response.
-- A class that uses the ModemCommunicator library and sends HTTP requests has been developed.
-- Added a `filter_response` function to process and clean up the responses received from the server.
 
     ```python
     def http_request(self, url, method='GET', data=None):        
@@ -43,7 +41,42 @@
 
         response += self.send_at_command('AT+QHTTPREAD=80', 1)
         return self.filter_response(response)
+
+
+- A class that uses the ModemCommunicator library and sends HTTP requests has been developed.
+
+    ```python
+    from ModemCommunicator import ModemCommunicator
+
+    def send_http_get(url):
+        modem = ModemCommunicator()
+        try:
+            response = modem.http_request(url, method='GET')
+            return response
+        finally:
+            modem.close()
+
+    def send_http_post(url, data):
+        modem = ModemCommunicator()
+        try:
+            response = modem.http_request(url, method='POST', data=data)
+            return response
+        finally:
+            modem.close()
+
+    if __name__ == "__main__":
+        get_url = "https://webhook.site/fbe25b48-2ea0-48a8-bf78"
+        post_url = "https://webhook.site/fbe25b48-2ea0-48a8-bf78"
+        post_data = "data=deneme"
         
+        print("GET İsteği Sonucu:", send_http_get(get_url))
+        print("POST İsteği Sonucu:", send_http_post(post_url, post_data))
+
+
+
+- Added a `filter_response` function to process and clean up the responses received from the server.
+
+    ```python
     def filter_response(self, response):
         lines = response.replace('\r', '').split('\n')
         filtered_response = {'response': [], 'status': 0}
