@@ -1,91 +1,63 @@
 import serial
+import serial.tools.list_ports
 import time
 
 class ModemCommunicator:
-    def __init__(self, port='/dev/ttyUSB3', baudrate=115200, timeout=1, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE, bytesize=serial.EIGHTBITS, flowcontrol=None):
-        self.port = port
-        self.baudrate = baudrate
-        self.timeout = timeout
-        self.parity = parity
-        self.stopbits = stopbits
-        self.bytesize = bytesize  
-        self.flowcontrol = flowcontrol
-        self.ser = None
-        self.setup_serial()
-        
-    def setup_serial(self):
-        if self.port is not None:
-            self.ser = serial.Serial(self.port, baudrate=self.baudrate, timeout=self.timeout, parity=self.parity, stopbits=self.stopbits, bytesize=self.bytesize)
-            if self.flowcontrol == 'hardware':
-                self.ser.rtscts = True
-            elif self.flowcontrol == 'software':
-                self.ser.xonxoff = True
-        else:
-            raise Exception("Wrong modem port.")
-            
-            
-    def send_at_command(self, command):
-        self.ser.write((command + '\r\n').encode())
-        time.sleep(1)
-        response = self.ser.read(self.ser.in_waiting).decode()
-        self.parse_at_response(command, response)
+    def __init__(self, port=None, baudrate=115200, timeout=1, parity=serial.PARITY_NONE):
+        self.port = port or self.find_modem_port()
+        if not self.port:
+            raise Exception("Modem port not found.")
+        self.ser = serial.Serial(self.port, baudrate=baudrate, timeout=timeout, parity=parity)
+   
+    @staticmethod
+    def find_modem_port():
+        ports = list(serial.tools.list_ports.comports())
+        for port in ports:
+            if "VID:PID=2C7C:0125" in port.hwid.upper():
+                return port.device
+        return None
 
+    def send_at_command(self, command, flag): 
+        self.ser.write((command + '\r\n').encode())
+    
+        if flag in [0, 2]:
+            time.sleep(1)
+        elif flag == 1:
+            time.sleep(4)
+
+        response = self.ser.read(self.ser.in_waiting).decode()
+        if flag == 2:
+            time.sleep(1)
+        return response
+        
     def close(self):
         self.ser.close()
-        
-    def parse_at_response(self, command, response):
-        cleaned_response = response.strip().split('\r\nOK')[0]
 
-        if command == 'AT+CSQ':
-            value = cleaned_response.split(':')[1].strip()
-            print(value)
-        
-        elif command == 'AT+CGSN':
-            print(cleaned_response.strip())
+    def http_request(self, url, method='GET', data=None):        
+        self.send_at_command('AT+QIACT?', 0)
+        self.send_at_command('AT+QICSGP=1,1,"Turkcell Twilio","","",1', 0)
+        self.send_at_command('AT+QIACT=1', 0)
+        self.send_at_command('AT+QHTTPCFG="contextid",1', 0)
+        self.send_at_command(f'AT+QHTTPURL={len(url)},80', 0)
+        self.send_at_command(url, 0)
 
-        elif command == 'AT+CREG?':
-            value = cleaned_response.split(':')[1].strip()
-            print(value)
-
-        elif command == 'AT+COPS?':
-            value = cleaned_response.split(',')
-            if len(value) > 2:
-                operator_name = value[2].replace('"', '').strip()
-                print(operator_name)
-
+        if method == 'GET':
+            response = self.send_at_command('AT+QHTTPGET=80', 2)
         else:
-            print(response)
+            self.send_at_command(f'AT+QHTTPPOST={len(data)},80,80', 0)
+            response = self.send_at_command(data, 0)
 
+        response += self.send_at_command('AT+QHTTPREAD=80', 1)
+        return self.filter_response(response)
         
-    def set_baudrate(self, baudrate):
-        self.baudrate = baudrate
-        self.setup_serial()
-        
-    def set_parity(self, parity):
-        self.parity = parity
-        self.setup_serial()
-        
-    def set_stopbits(self, stopbits):
-        self.stopbits = stopbits
-        self.setup_serial()
+    def filter_response(self, response):
+        lines = response.replace('\r', '').split('\n')
+        filtered_response = {'response': [], 'status': 0}
+        search_terms = ('+QHTTPGET', '+QHTTPPOST', '+QHTTPREAD', 'Request successful', 'OK', 'CONNECT')
 
-    def set_bytesize(self, bytesize):
-        self.bytesize = bytesize
-        self.setup_serial()
+        for line in lines:
+            line = line.strip()
+            if line.startswith(search_terms):
+                filtered_response['response'].append(line)
 
-    def set_flowcontrol(self, flowcontrol):
-        self.flowcontrol = flowcontrol
-        self.setup_serial()
-
-
-
-modem = ModemCommunicator()
-    
-modem.set_baudrate(9600) 
-#modem.set_parity(serial.PARITY_ODD) #22 invalid argument error received
-modem.set_stopbits(serial.STOPBITS_ONE)
-modem.set_bytesize(serial.EIGHTBITS)
-modem.set_flowcontrol('software')
-    
-modem.send_at_command('AT+COPS?')
-modem.close()
+        return filtered_response

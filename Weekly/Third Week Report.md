@@ -29,4 +29,3 @@
 - [unittest — Unit testing framework — Python Documentation](https://docs.python.org/3/library/unittest.html)
 - [A Beginner’s Guide to Unit Tests in Python - Dataquest](https://www.dataquest.io/blog/unit-tests-python/)
 - [Python Unit Test Objects Patching - GeeksforGeeks](https://www.geeksforgeeks.org/python-unit-test-objects-patching-set-1/)
-- [Understanding Python unittest - Cars.com](https://www.cars.com/vehicledetail/06503773-2179-4282-9a3a-1dce54640d4d/)
