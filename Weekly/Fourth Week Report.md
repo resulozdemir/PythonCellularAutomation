@@ -24,3 +24,4 @@
 
 ## References
 - [Sixfab HTTP AT Commands Manual](https://sixfab.com/wp-content/uploads/2018/09/Quectel_EC2xEG9xEM05_HTTPS_AT_Commands_Manual_V1.0.pdf)
+- [Sixfab AT Commands Manual](https://sixfab.com/wp-content/uploads/2021/06/Quectel_EC2xEG9xEG2x-GEM05_Series_AT_Commands_Manual_V2.0.pdf)
