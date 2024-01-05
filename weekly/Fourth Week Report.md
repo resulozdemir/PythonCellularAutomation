@@ -26,8 +26,6 @@
 
     ```python
     def http_request(self, url, method='GET', data=None): 
-        self.send_at_command('AT+QICSGP=1,1,"Turkcell Twilio","","",1', 0)
-        self.send_at_command('AT+QIACT=1', 0)
         self.send_at_command('AT+QHTTPCFG="contextid",1', 0)
         self.send_at_command(f'AT+QHTTPURL={len(url)},80', 0)
         self.send_at_command(url, 0)
