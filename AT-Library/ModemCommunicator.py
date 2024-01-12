@@ -37,7 +37,7 @@ class ModemCommunicator:
     #----------------------------------------------------------------------
         
     def http_configure(self):
-        self.send_at_command('AT+CGDCONT=1,"IP","internet"')
+        self.send_at_command('AT+CGDCONT=1,"IP","super"')
         self.send_at_command('AT+QICSGP=1,1,"super","","",1')
         self.send_at_command('AT+QIACT=1')
         self.send_at_command('AT+QHTTPCFG="contextid",1')
