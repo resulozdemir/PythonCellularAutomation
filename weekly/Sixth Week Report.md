@@ -9,17 +9,20 @@
 - After the modem was restarted, 'sudo pon' command was run but 'Modem hangup Connection terminated.' error received.
 - To solve the error, solutions in articles with similar errors on community.sixfab.com were tried, but the problem could not be solved.
 
-![Alt text](ppp_error.jpg)
+![ppp_error](https://github.com/resulozdemir/PythonCellularAutomation/assets/102479969/8e1270ed-1ae2-4785-a161-bc4d00ea4da5)
+
 ### 2. QMI/RMNET Protocol Installation
 
 - The installation of the modem QMI protocol is made ready with AT commands (AT+QCFG="usbnet",0)
 - libqmi installation has been completed.
 - When the 'sudo qmicli -d /dev/cdc-wdm0 --dms-get-operating-mode' command is run in the terminal, 'error: couldn't create QmiDevice: Couldn't query file info: Error when getting information for file “/dev/ cdc-wdm0”: 'No such file or directory' error was received.
 
+![qmi error](https://github.com/resulozdemir/PythonCellularAutomation/assets/102479969/afba475c-38ba-4377-9f69-7e1e314435d9)
+
 ### 3. ECM Protocol Installation and Speed Testing
 - Internet connection was established with ECM protocol and the speed test was performed successfully.
 
-![Alt text](<ECM Speed Test.jpg>)
+![ECM Speed Test](https://github.com/resulozdemir/PythonCellularAutomation/assets/102479969/33b8e062-55ab-464b-a019-135b4841ad70)
 
 ## References
 - [Setting up the PPP connection](https://docs.sixfab.com/page/setting-up-the-ppp-connection-for-sixfab-shield-hat)
