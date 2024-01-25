@@ -2,7 +2,7 @@
 
 ## Tasks and Progress Status
 
-### 1. PPP Installation
+### PPP Installation
 - The modem software was written to use ECM, So, the error "Modem hangup Connection terminated." happened. It was fixed with these commands:
 
     ```Bash
@@ -13,13 +13,13 @@
 
 ![PPP Speed Test](<PPP speed test.png>)
 
-### 2. QMI Installation
+### QMI Installation
 - QMI installation was successfully completed.
 - A speed test was done.
 
 ![QMI Speed Test](<QMI speed test.png>)
 
-### 3. Writing Final Report of Project
+### Writing Final Report of Project
 - The final report for the project was writed.
 
 ---
