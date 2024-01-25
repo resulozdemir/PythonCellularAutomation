@@ -22,7 +22,7 @@
 ### 3. ECM Protocol Installation and Speed Testing
 - Internet connection was established with ECM protocol and the speed test was performed successfully.
 
-![ECM Speed Test](https://github.com/resulozdemir/PythonCellularAutomation/assets/102479969/33b8e062-55ab-464b-a019-135b4841ad70)
+![ECM speed test](<ECM speed test.png>)
 
 ## References
 - [Setting up the PPP connection](https://docs.sixfab.com/page/setting-up-the-ppp-connection-for-sixfab-shield-hat)
