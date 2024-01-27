@@ -15,14 +15,14 @@
 - Measure the speed of connections established through these three protocols and compare them.
 
 ### Technologies and Methods Used
-- Python: Used as the development language in the project.
-- AT Commands: Utilized for communication with the modem.
-- Serial Library: Employed for serial communication between devices.
-- HTTP (Hypertext Transfer Protocol): The basic web protocol used for data exchange.
-- MQTT (Message Queuing Telemetry Transport): A lightweight and simple messaging protocol.
-- PPP (Point-to-Point Protocol): A protocol used for establishing a point-to-point connection over the internet.
-- QMI (Qualcomm MSM Interface): Used in mobile devices and data cards for 3G and 4G LTE connections.
-- ECM (Ethernet Control Model): A protocol for sending control signals over Ethernet.
+- **Python:** Used as the development language in the project.
+- **AT Commands:** Utilized for communication with the modem.
+- **Serial Library:** Employed for serial communication between devices.
+- **HTTP (Hypertext Transfer Protocol):** The basic web protocol used for data exchange.
+- **MQTT (Message Queuing Telemetry Transport):** A lightweight and simple messaging protocol.
+- **PPP (Point-to-Point Protocol):** A protocol used for establishing a point-to-point connection over the internet.
+- **QMI (Qualcomm MSM Interface):** Used in mobile devices and data cards for 3G and 4G LTE connections.
+- **ECM (Ethernet Control Model):** A protocol for sending control signals over Ethernet.
 
 ### System Architecture 
 - ModemCommunicator Class: The class used for communicating with the modem.
