@@ -1,52 +1,37 @@
-# PythonCellularAutomation
----------------------------------------------------------------
+#Python-Based Modem Communication Library Project
 
-### Gantt Schema
+##Technical Details
 
+###Project Requirements
+- Develop a Python library for communicating with a modem, capable of sending AT commands and processing responses.
+	- Extra: Automatic detection of the modem serial port.
+	- Extra: Customization of serial port settings like baud rate and parity.
+- Write sample code to send HTTP GET and POST requests to webhook.site via the modem, using the previously developed library.
+- Create example code to send and receive MQTT messages on a topic via a free and open MQTT broker hivemq, using the library.
+- Enable Raspberry Pi to access the internet through the modem using:
+    - PPP protocol
+	- QMI/RMNET protocol
+	- ECM protocol
+- Measure the speed of connections established through these three protocols and compare them.
 
-![gantt](https://github.com/resulozdemir/PythonCellularAutomation/assets/102479969/f7db76cf-0c22-4811-81dc-b7dec68c7046)
+###Technologies and Methods Used
+- Python: Used as the development language in the project.
+- AT Commands: Utilized for communication with the modem.
+- Serial Library: Employed for serial communication between devices.
+- HTTP (Hypertext Transfer Protocol): The basic web protocol used for data exchange.
+- MQTT (Message Queuing Telemetry Transport): A lightweight and simple messaging protocol.
+- PPP (Point-to-Point Protocol): A protocol used for establishing a point-to-point connection over the internet.
+- QMI (Qualcomm MSM Interface): Used in mobile devices and data cards for 3G and 4G LTE connections.
+- ECM (Ethernet Control Model): A protocol for sending control signals over Ethernet.
 
+###System Architecture 
+- ModemCommunicator Class: The class used for communicating with the modem.
+- Examples of communication over HTTP and MQTT protocols.
+- Establishing internet connection on Raspberry Pi using various network protocols.
 
+##Development Process
+**Stage 1:** Development of the basic library for communication with the modem.
+**Stage 2:** Addition of functions to the library for sending and receiving data using the HTTP protocol and the development of an example application that facilitates communication through these functions.
+**Stage 3:** Incorporation of functions into the library for publishing and subscribing to messages using the MQTT protocol and the development of an example application that communicates through these functions.
+**Stage 4:** Establishing internet connection using PPP, QMI, and ECM protocols, conducting speed tests, and comparing the protocols.
 
----
-
-
-# Project Plan
-
-## Week 1: Markdown Training, Raspberry Pi Setup, and Project Planning
-- Creation of the GitHub repository for the project.
-- Learning how to create documents with Markdown.
-- Initial setup of Raspberry Pi 3B+, preparing the operating system, learning basic bash commands.
-- Preparing a 6-week project plan.
-
-## Week 2: Basics of Python Programming and Introduction to AT Commands
-- Learning the fundamentals of the Python programming language.
-- Understanding what AT commands are and how to use them.
-- Trying to communicate with the modem using basic AT commands.
-- Researching Python libraries for serial port communication.
-
-## Week 3: Developing Python Library - Basic Functions
-- Starting to write a library for serial port communication in Python.
-- Writing functions to process responses from AT commands received from the modem.
-- Testing and debugging the written code.
-
-## Week 4: Developing Python Library - Advanced Features
-- Writing functions to customize serial port settings (baud rate, parity, etc.).
-- Developing an automatic modem serial port recognition feature.
-- Testing and debugging the developed features.
-
-## Week 5: HTTP and MQTT Communication
-- Writing an example to send HTTP GET and POST requests from the modem.
-- Writing sample code to connect to an MQTT broker and send/receive messages.
-- Tests and debugging.
-
-## Week 6: Raspberry Pi Internet Connection and Protocol Testing
-- Setting up PPP, QMI/RMNET, and ECM protocols on Raspberry Pi.
-- Establishing and testing internet connection with each protocol.
-- Conducting speed tests and comparing protocols.
-
-## Week 7: Project Finalization and Documentation
-- Reviewing all code and making final adjustments.
-- Completing project documentation and preparing the final report.
-- Updating the GitHub repository and uploading all final versions of the code.
-- Writing the report.
