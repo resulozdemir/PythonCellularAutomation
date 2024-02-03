@@ -3,7 +3,7 @@ from ModemCommunicator import ModemCommunicator
 broker = "broker.hivemq.com"
 port = 1883
 client_id = "clientExample"
-topic = "“topic/example"
+topic = "topic/example"
 message = "Hello MQTT!"
 
 modem = ModemCommunicator()
@@ -15,7 +15,7 @@ modem.mqtt_action('subscribe', topic)
 modem.mqtt_action('publish', topic, message)
 
 response = modem.mqtt_action('receive', topic)
-print(response)
+print("Received MQTT message: ",response)
 
 modem.disconnect_mqtt(topic)
 modem.close() 

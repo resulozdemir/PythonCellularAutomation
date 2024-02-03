@@ -3,10 +3,10 @@ import serial.tools.list_ports
 import time
 
 class ModemCommunicator:
-    def __init__(self, port=None, baudrate=115200, timeout=1, parity=serial.PARITY_NONE):
+    def __init__(self, port=None, baudrate=115200, timeout=2, parity=serial.PARITY_NONE):
         self.port = port or self.find_modem_port()
         if not self.port:
-            raise Exception("Modem portu bulunamadi.")
+            raise Exception("Modem port not found.")
         self.ser = serial.Serial(self.port, baudrate=baudrate, timeout=timeout, parity=parity)
    
     @staticmethod
@@ -19,18 +19,15 @@ class ModemCommunicator:
  
     def send_at_command(self, command, flag = -1): 
         self.ser.write((command + '\r\n').encode())
-    
         if flag in [0, 1]:
             time.sleep(1)
 
         response = self.ser.read(self.ser.in_waiting).decode()
-
         if flag in [1, 2]:
             time.sleep(1)
-
+    
         return response   
     
-        
     def close(self):
         self.ser.close()
 
@@ -53,24 +50,11 @@ class ModemCommunicator:
             self.send_at_command(f'AT+QHTTPPOST={len(data)},80,80', 0) 
             response = self.send_at_command(data, 0) 
 
+        time.sleep(1)
         response += self.send_at_command('AT+QHTTPREAD=80', 0) 
         return self.filter_response(response)
-    
-    
-    def filter_response(self, response):
-        lines = response.replace('\r', '').split('\n')
-        filtered_response = {'response': [], 'status': 0}
-        http_terms = ('+QHTTPGET', '+QHTTPPOST', '+QHTTPREAD', 'Request successful', 'OK', 'CONNECT')
-        mqtt_terms = ('+QMTOPEN', '+QMTCONN', '+QMTSUB', '+QMTPUB', '+QMTRECV', '+QMTUNS', '+QMTDISC', '+QMTCLOSE')
-
-        for line in lines:
-            line = line.strip()
-            for term in http_terms or mqtt_terms:
-                if term in line:
-                    filtered_response['response'].append(line)
-
-        return filtered_response
         
+
     #----------------------------------------------------------------------
         
     def setup_mqtt(self, broker, port, client_id):
@@ -81,17 +65,36 @@ class ModemCommunicator:
     def mqtt_action(self, action, topic, message=None):
         if action == 'subscribe':
             self.send_at_command(f'AT+QMTSUB=0,1,"{topic}",2', 0) 
+
         elif action == 'publish':
             msg_length = len(message)
             self.send_at_command(f'AT+QMTPUBEX=0,0,0,0,"{topic}",{msg_length}', 0) 
             self.send_at_command(message, 2) 
+
         elif action == 'receive':
             response = self.send_at_command('AT+QMTRECV=0') 
-            return response
+            return self.filter_response(response)       
+        
 
     def disconnect_mqtt(self, topic):
-        self.send_at_command(f'AT+QMTUNS=0,2,"{topic}"', 0) 
-        self.send_at_command('AT+QMTDISC=0')  
+        self.send_at_command(f'AT+QMTUNS=0,2,"{topic}"', 1)
+        self.send_at_command(f'AT+QMTDISC=0')   
         
     #----------------------------------------------------------------------
-   
+
+    def filter_response(self, response):
+        lines = response.replace('\r', '').split('\n')
+        filtered_response = []
+        terms = ('+QHTTPGET', '+QHTTPPOST', '+QHTTPREAD', 'Request successful', 'OK', 'CONNECT', 
+                 '+QMTSUB', '+QMTPUBEX', '+QMTRECV', '+QMTUNS', 'ERROR')
+        
+        for line in lines:
+            line = line.strip()
+            for term in terms:
+                if term in line:
+                    filtered_response.append(line)
+                    break
+
+        return filtered_response
+
+    #----------------------------------------------------------------------
