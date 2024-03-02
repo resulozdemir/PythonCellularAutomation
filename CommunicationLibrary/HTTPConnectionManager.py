@@ -6,10 +6,10 @@ post_data = "data=test"
 modem = ModemCommunicator()
 modem.http_configure()
 
-response = modem.http_request(url, method='GET')
+response = modem.http_request(url, method="GET")
 print("GET Request Result: ", response)
 
-response = modem.http_request(url, method='POST', data=post_data)
+response = modem.http_request(url, method="POST", data=post_data)
 print("POST Request Result: ", response)
 
 modem.close()
